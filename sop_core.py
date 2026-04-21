@@ -475,9 +475,14 @@ def render_step_form(step_key: str) -> None:
     elif uses_fixed_input_mode(step_key):
         if step_inputs:
             st.markdown("### Input")
-            st.caption("Fixed step inputs")
             for field in step_inputs:
-                st.markdown(f"- {field}")
+                if field.strip().lower().endswith(".md"):
+                    st.markdown(
+                        f'- <span style="color: #1a6fcf; background-color: #d0e8ff; padding: 2px 8px; border-radius: 4px; font-weight: 600;">{field}</span>',
+                        unsafe_allow_html=True,
+                    )
+                else:
+                    st.markdown(f"- {field}")
 
         if step_optional_inputs:
             st.markdown("### Input Placeholders")
@@ -723,6 +728,12 @@ def render_step_page(step_key: str) -> None:
         st.checkbox("Done", value=st.session_state.done_flags[step_key], disabled=True, key=f"done_{step_key}")
 
     st.markdown("### Prompt Output")
+    save_to = config.get("save_to", "")
+    if save_to and save_to != "(no required output file)":
+        st.markdown(
+            f'Save to: <span style="color: #1a6fcf; background-color: #d0e8ff; padding: 2px 8px; border-radius: 4px; font-weight: 600;">{save_to}</span>',
+            unsafe_allow_html=True,
+        )
     st.text_area(
         "Generated Prompt",
         value=st.session_state.generated_prompt_by_step[step_key],
