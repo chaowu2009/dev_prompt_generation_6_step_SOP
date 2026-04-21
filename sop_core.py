@@ -414,13 +414,12 @@ def ensure_state() -> None:
 
 def build_done_subtitle() -> str:
     parts: List[str] = []
-    for step_key in STEP_CONFIG.keys():
-        step_num = step_key.split("_")[-1]
+    for step_key, config in STEP_CONFIG.items():
         is_done = st.session_state.done_flags.get(step_key, False)
         if is_done:
-            parts.append(f"Step {step_num} (Done)")
+            parts.append(f"{step_key}({config['name']}) (Done)")
         else:
-            parts.append(f"Step {step_num}")
+            parts.append(f"{step_key}({config['name']})")
     return ", ".join(parts)
 
 
@@ -453,7 +452,7 @@ def _render_field(step_key: str, field: str, required: bool) -> None:
 
 def render_step_form(step_key: str) -> None:
     config = STEP_CONFIG[step_key]
-    st.subheader(f"{step_key.upper()} - {config['name']}")
+    st.subheader(f"{step_key}({config['name']})")
     st.write(f"Role: {config['role']}")
     st.write(f"Task: {config['task']}")
 
@@ -697,7 +696,7 @@ def render_step_page(step_key: str) -> None:
     ensure_state()
     config = STEP_CONFIG[step_key]
 
-    st.title(f"{step_key.upper()} - {config['name']}")
+    st.title(f"{step_key}({config['name']})")
     st.caption(build_done_subtitle())
     st.caption("Use Generate to build the prompt. Done flag is set automatically per step.")
 
