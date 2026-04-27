@@ -140,15 +140,14 @@ STEP_CONFIG: Dict[str, Dict[str, Any]] = {
         "name": "Define",
         "role": "Senior Agile Java engineering lead",
         "task": "Turn the raw request into a sprint-ready Jira item.",
-        "inputs": [
+        "inputs": [],
+        "optional_inputs": [
             "[story]",
             "[bug]",
             "[notes]",
             "[logs]",
             "[screenshots text]",
             "[business context]",
-        ],
-        "optional_inputs": [
             "[related ticket IDs]",
             "[business priority]",
             "[known impacted systems/modules]",
