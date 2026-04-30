@@ -245,7 +245,7 @@ STEP_CONFIG: Dict[str, Dict[str, Any]] = {
     "step_4": {
         "name": "Build",
         "role": "Senior Java developer",
-        "task": "Turn Step 3 into implementation-ready code output.",
+        "task": "Turn Step 3 into implementation-ready code output and produce concrete code changes.",
         "inputs": "dev_step_3_output.md",
         "optional_inputs": [
             "[repo structure/module paths]",
@@ -258,6 +258,7 @@ STEP_CONFIG: Dict[str, Dict[str, Any]] = {
         ],
         "outputs": [
             "Code changes for affected layers",
+            "Complete compilable code snippets (not pseudocode) for each changed file",
             "Validation, exception handling, and logging updates",
             "Required config changes",
             "Branch name, commit message, and PR title suggestions",
@@ -267,6 +268,9 @@ STEP_CONFIG: Dict[str, Dict[str, Any]] = {
             "No unnecessary refactoring.",
             "Keep code readable and production-oriented.",
             "Identify each code block with file path.",
+            "Generate complete code blocks with proper language tags (for example: java, xml, yaml, properties, sql).",
+            "For each changed file, provide full method/class-level code needed to implement the change, including imports and signatures.",
+            "Do not return design-only text or pseudocode unless explicitly requested.",
             "Do not skip key imports or helper methods.",
             "Reuse existing framework components and patterns first.",
             "Do not fix unrelated existing issues unless they are simple, safe, and directly helpful to the requested change.",
