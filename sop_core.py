@@ -278,6 +278,7 @@ STEP_CONFIG: Dict[str, Dict[str, Any]] = {
             "Clearly summarize any fake, sample, placeholder, or hard-coded values found in the code output.",
             "Stay within scope.",
             "Use the Step 0 markdown style.",
+            "Add **/target/ into .gitignore if not yet."
         ],
         "save_to": "dev_step_4_output.md",
     },
