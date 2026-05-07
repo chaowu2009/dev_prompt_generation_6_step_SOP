@@ -5,11 +5,12 @@ from typing import Any, Dict, List
 
 import streamlit as st
 
-def save_current_prompt(output_dir: str, step_number: int, prompt_text: str) -> None:
-    os.makedirs(output_dir, exist_ok=True)
-    file_path = os.path.join(output_dir, f"prompt_step_{step_number}.md")
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.write(prompt_text)
+def save_current_prompt(SOP_OUTPUT_DIR, step_number):
+    with open(f"{SOP_OUTPUT_DIR}/prompt_step_{step_number}.md", 'w') as f:
+        f.write(f"## Step {step_number}\n\n")
+        for task in [step['tasks']]:  # assuming steps is a list of dictionaries
+            for t in task[0]:
+                f.write("- " + t + "\n")
 
 def apply_global_styles() -> None:
     st.markdown(
