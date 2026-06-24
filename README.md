@@ -2,8 +2,8 @@
 
 This repository is a Streamlit app that helps teams generate structured prompts for a 6-step SDLC workflow:
 
-1. Define
-2. Clarify
+1. Clarify
+2. Define
 3. Design
 4. Build
 5. Test
@@ -34,8 +34,8 @@ It also provides a separate page to generate a repository-inspection prompt for 
 ├── README.md
 └── pages/
 	 ├── step_0(Master Prompt).py
-	 ├── step_1(Define).py
-	 ├── step_2(Clarify).py
+	 ├── step_1(Clarify).py
+	 ├── step_2(Define).py
 	 ├── step_3(Design).py
 	 ├── step_4(Build).py
 	 ├── step_5(Test).py
